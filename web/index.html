@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surf AI | 浪況回報系統</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+TC:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-mode">
+    <div class="background-blob"></div>
+    <div class="background-blob blob-2"></div>
+    
+    <header>
+        <div class="container">
+            <h1 class="logo">Surf <span>AI</span></h1>
+            <p class="subtitle">台灣東岸浪況回報中心</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 當前海象數據摘要 (從 API 或 Sheet 抓取) -->
+        <section id="live-data" class="glass-card">
+            <h2><span class="icon">🌊</span> 即時數據快報</h2>
+            <div class="data-grid">
+                <div class="data-item">
+                    <span class="label">浪高</span>
+                    <span class="value" id="wave-height">--</span>
+                </div>
+                <div class="data-item">
+                    <span class="label">週期</span>
+                    <span class="value" id="wave-period">--</span>
+                </div>
+                <div class="data-item">
+                    <span class="label">風速</span>
+                    <span class="value" id="wind-speed">--</span>
+                </div>
+                <div class="data-item">
+                    <span class="label">潮位</span>
+                    <span class="value" id="sea-level">--</span>
+                </div>
+            </div>
+            <div class="update-info">最後更新：<span id="last-update">--</span></div>
+        </section>
+
+        <!-- 回報表單 -->
+        <section id="report-form" class="glass-card">
+            <h2><span class="icon">📝</span> 浪況回報</h2>
+            <form id="surf-report">
+                <div class="form-group">
+                    <label for="spot">選擇浪點</label>
+                    <select id="spot" required>
+                        <option value="Wushigang">烏石港 Wushigang</option>
+                        <option value="Doublelion">雙獅 Doublelion</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>浪況評分 (1-5)</label>
+                    <div class="rating-group">
+                        <input type="radio" name="rating" value="1" id="r1"><label for="r1">1</label>
+                        <input type="radio" name="rating" value="2" id="r2"><label for="r2">2</label>
+                        <input type="radio" name="rating" value="3" id="r3" checked><label for="r3">3</label>
+                        <input type="radio" name="rating" value="4" id="r4"><label for="r4">4</label>
+                        <input type="radio" name="rating" value="5" id="r5"><label for="r5">5</label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comments">現場短評</label>
+                    <textarea id="comments" rows="3" placeholder="例如：浪形美，稍微有風..."></textarea>
+                </div>
+
+                <button type="submit" id="submit-btn" class="btn-primary">發送回報</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2026 Surf AI Project. Built for Surfers.</p>
+        </div>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>
