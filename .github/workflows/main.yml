@@ -3,7 +3,7 @@ name: Daily Surf Data Collection
 on:
   schedule:
     # 台灣時間 09:15 (UTC 01:15)
-    - cron: '15 1 * * *'
+    - cron: '14 1 * * *'
     # 台灣時間 14:15 (UTC 06:15)
     - cron: '15 6 * * *'
   workflow_dispatch: # 允許手動觸發
