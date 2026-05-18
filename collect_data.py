@@ -123,6 +123,5 @@ def main():
             worksheet.append_row(row_data)
             print(f"✅ 已寫入 {name} ({session_name}) - 潮高: {row_data[7]}m")
 
-
 if __name__ == "__main__":
     main()
