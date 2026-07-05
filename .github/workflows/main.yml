@@ -13,12 +13,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Python
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: '3.9'
+
+      - name: Set session for morning run
+        if: github.event.schedule == '14 1 * * *'
+        run: echo "SESSION_NAME=Morning" >> $GITHUB_ENV
+
+      - name: Set session for afternoon run
+        if: github.event.schedule == '15 6 * * *'
+        run: echo "SESSION_NAME=Afternoon" >> $GITHUB_ENV
 
       - name: Install dependencies
         run: |

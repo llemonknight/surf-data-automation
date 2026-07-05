@@ -91,13 +91,13 @@ def main():
     # 判斷現在應該抓哪個時段 (根據目前台灣時間)
     now_taipei = arrow.now('Asia/Taipei')
     current_hour = now_taipei.hour
-    
-    # 自動判定邏輯：如果是上午 8-11 點跑，抓 Morning；如果是下午 13-16 點跑，抓 Afternoon
-    # 如果是手動跑或排程，可以由參數決定，這裡先簡單判斷
-    if 8 <= current_hour <= 12:
-        session_name = "Morning"
-    else:
-        session_name = "Afternoon"
+    session_name = os.environ.get("SESSION_NAME")
+    if not session_name:
+        # Fallback for manual runs.
+        if 8 <= current_hour <= 12:
+            session_name = "Morning"
+        else:
+            session_name = "Afternoon"
 
     target_hour = SESSION_HOURS[session_name]
     today_str = now_taipei.format('YYYY-MM-DD')
