@@ -102,7 +102,7 @@ def main():
     target_hour = SESSION_HOURS[session_name]
     today_str = now_taipei.format('YYYY-MM-DD')
     
-    print(f"🌊 自動任務開始：抓取 {today_str} 的 {session_name} 時段數據...")
+    print(f"🌊 自動任務GOGO：抓取 {today_str} 的 {session_name} 時段數據...")
 
     existing_data = worksheet.get_all_values()
     existing_keys = set()
